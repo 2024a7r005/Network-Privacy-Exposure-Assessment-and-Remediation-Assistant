@@ -6,7 +6,7 @@ from datetime import datetime
 # 1. PAGE SETUP AND EXISTING DARK THEME
 st.set_page_config(
     page_title="NetCapture Pro",
-    page_icon="🛡️",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -227,7 +227,7 @@ def prepare_report(df, findings):
 
 # 5. SIDEBAR AND FILE INPUT
 with st.sidebar:
-    st.markdown("## 🛡️ NetCapture Pro")
+    st.markdown("##  NetCapture Pro")
     st.caption("NETWORK SECURITY WORKSPACE")
     st.divider()
 
@@ -237,7 +237,7 @@ with st.sidebar:
     ])
 
     st.divider()
-    st.markdown("#### 📂 Capture Input")
+    st.markdown("#### Capture Input")
     uploaded_file = st.file_uploader(
         "Upload Wireshark CSV",
         type=["csv"],
@@ -276,7 +276,7 @@ findings = create_findings(df) if df is not None else pd.DataFrame()
 st.markdown("""
 <div class="hero">
     <div class="section-label">NETWORK TRAFFIC INTELLIGENCE</div>
-    <div class="hero-title">🛡️ NetCapture Pro</div>
+    <div class="hero-title"> NetCapture Pro</div>
     <div class="hero-subtitle">
         Network visibility • Privacy assessment • Evidence-based findings
         • Remediation guidance
@@ -300,16 +300,16 @@ if page == "Dashboard":
         left, right = st.columns(2)
         with left:
             st.markdown("""
-            <div class="panel"><h3>📡 Traffic Intelligence</h3>
+            <div class="panel"><h3> Traffic Intelligence</h3>
             Explore protocols, packet sizes and communicating addresses.</div>
-            <div class="panel"><h3>🔎 Privacy Assessment</h3>
+            <div class="panel"><h3> Privacy Assessment</h3>
             Review observations with packet evidence and explanations.</div>
             """, unsafe_allow_html=True)
         with right:
             st.markdown("""
-            <div class="panel"><h3>🛠️ Remediation Centre</h3>
+            <div class="panel"><h3> Remediation Centre</h3>
             Review practical recommendations for identified indicators.</div>
-            <div class="panel"><h3>📄 Assessment Report</h3>
+            <div class="panel"><h3> Assessment Report</h3>
             Export findings and assessment limitations.</div>
             """, unsafe_allow_html=True)
 
@@ -356,7 +356,7 @@ if page == "Dashboard":
 
 # 9. TRAFFIC ANALYSIS
 elif page == "Traffic Analysis":
-    st.subheader("📡 Traffic Analysis")
+    st.subheader(" Traffic Analysis")
 
     if df is None:
         st.info("Upload a Wireshark CSV to analyze traffic.")
@@ -403,7 +403,7 @@ elif page == "Traffic Analysis":
 
 # 10. PRIVACY FINDINGS
 elif page == "Privacy Findings":
-    st.subheader("🔎 Privacy Findings")
+    st.subheader(" Privacy Findings")
     st.caption("Rule-based observations supported by fields in the uploaded CSV.")
 
     if df is None:
@@ -442,7 +442,7 @@ elif page == "Privacy Findings":
 
 # 11. REMEDIATION
 elif page == "Remediation":
-    st.subheader("🛠️ Remediation Centre")
+    st.subheader(" Remediation Centre")
 
     if df is None:
         st.info("Upload a capture to see recommendations based on its findings.")
@@ -468,7 +468,7 @@ elif page == "Remediation":
 
 # 12. ASSESSMENT REPORT
 elif page == "Assessment Report":
-    st.subheader("📄 Assessment Report")
+    st.subheader(" Assessment Report")
 
     if df is None:
         st.info("Upload a Wireshark CSV to generate a report.")
@@ -487,7 +487,7 @@ elif page == "Assessment Report":
 
         report = prepare_report(df, findings)
         st.download_button(
-            "⬇️ Download Text Assessment Report",
+            " Download Text Assessment Report",
             data=report,
             file_name="netcapture_pro_report.txt",
             mime="text/plain",
@@ -496,7 +496,7 @@ elif page == "Assessment Report":
 
         if not findings.empty:
             st.download_button(
-                "⬇️ Export Findings as CSV",
+                " Export Findings as CSV",
                 data=findings.to_csv(index=False).encode("utf-8"),
                 file_name="netcapture_pro_findings.csv",
                 mime="text/csv",
